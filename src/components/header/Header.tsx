@@ -89,7 +89,7 @@ const Header = () => {
           aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
           variant="outline"
           color="theme"
-          size="size-2"
+          size="size-3"
           className="hover:bg-gray-100 dark:hover:bg-gray-700 !px-[10px]"
         >
           <Modelcon mode={theme === "dark" ? "light" : "dark"} />

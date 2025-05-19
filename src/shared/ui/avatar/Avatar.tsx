@@ -13,7 +13,7 @@ const Avatar = ({ name, size = "md", alt, url, onClick }: AvatarProps) => {
     md: "w-[40px] h-[40px]",
     lg: "w-[45px] h-[45px]",
   }[size];
-  const sizeFinalClass = `overflow-hidden ${sizeClasses} border border-gray-300 dark:border-gray-700 rounded-full`;
+  const sizeFinalClass = `overflow-hidden ${sizeClasses} border border-gray-300 dark:border-gray-700 rounded-md`;
   return (
     <div className="flex items-center gap-[12px] lg:cursor-pointer" onClick={onClick}>
       <div className={sizeFinalClass}>
