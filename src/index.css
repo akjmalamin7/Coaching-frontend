@@ -44,7 +44,31 @@ body {
   --color-1150: #0052cc1a;
   --color-1200: #0052cc1a;
   --color-1250: #f1b44c;
+
+  --color-background: var(--color-background);
+  --color-border: var(--color-border);
+  --color-text: var(--color-text);
+  --color-muted: var(--color-muted);
+  --color-card: var(--color-card);
 }
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+:root {
+  --background: #ffffff;
+  --border: #000000;
+  --text: #000000;
+  --muted: #7b7b7b;
+}
+.dark {
+  --background: #ffffff;
+  --border: #000000;
+  --text: #000000;
+  --muted: #7b7b7b;
+}
+/* body {
+  background-color: var(--background);
+  color: var(--text);
+} */
+
 @keyframes indeterminate {
   0% {
     left: -35%;

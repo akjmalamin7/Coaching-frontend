@@ -1,6 +1,6 @@
 import Button from "@/shared/ui/button";
 import Text from "@/shared/ui/text";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 import HamburgerIcon from "@/assets/icons/hamburgerIcon";
 import useClickOutSide from "@/shared/hooks/useClickOutSide";
@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AppDrawer from "../appDrawer/AppDrawer";
 const Header = () => {
+  const [isDark, setIsDark] = useState<boolean>(false);
   const dropdownRef = useRef<HTMLDivElement>(null!);
 
   // // ?@_______ get user@
@@ -26,6 +27,21 @@ const Header = () => {
     setVisible((prev) => !prev);
   };
   useClickOutSide(dropdownRef, setVisible);
+  useEffect(() => {
+    const isDarkMode = localStorage.getItem("theme") === "dark";
+    if (isDarkMode) {
+      document.documentElement.classList.add("dark");
+      setIsDark(true);
+    }
+  }, []);
+
+  const handleDark = () => {
+    const html = document.documentElement;
+    const isDarkMode = html.classList.toggle("dark");
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+    setIsDark(isDarkMode);
+  };
+
   return (
     <div className="flex justify-between w-full px-[20px]">
       <div className="flex items-center gap-[10px]">
@@ -42,6 +58,7 @@ const Header = () => {
           </Text>
         </div>
       </div>
+      <Button onClick={handleDark}> Toggle to {isDark ? "Light" : "Dark"} Mode</Button>
       <div className="relative">
         <Avatar
           //  url={user?.photo || ""}
