@@ -10,13 +10,13 @@ export interface SelectProps {
   value?: string;
   radius?: "sm" | "md" | "lg";
   color?: "dark" | "light";
-  bgColor?: "dark" | "light" | "transparent";
+  bgColor?: "dark" | "light" | "transparent" | "theme";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   className?: string;
   onChange?: (event: ChangeEvent<HTMLSelectElement>) => void;
   onFocus?: (event: FocusEvent<HTMLSelectElement>) => void;
-  options?: SelectOption[]; 
+  options?: SelectOption[];
 }
 
 const Select = (
@@ -32,7 +32,7 @@ const Select = (
     radius = "sm",
     size = "lg",
     value,
-    options = [], 
+    options = [],
   }: SelectProps,
   ref: React.Ref<HTMLSelectElement>
 ) => {
@@ -54,12 +54,14 @@ const Select = (
   }[radius];
 
   const bgClasses = {
-    dark: "bg-gray-500",
-    light: "bg-[#f7f7f708]",
+    dark: "bg-gray-700 border-gray-600 text-white ",
+    light: "bg-gray-50 border border-gray-300 text-gray-900 ",
     transparent: "",
+    theme:
+      "bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white  ",
   }[bgColor];
 
-  const finalSelectClasses = `border border-gray-500 w-full px-[15px] outline-none ${roundClasses} ${sizeClasses} ${bgClasses} ${colorClasses} ${className}`;
+  const finalSelectClasses = `w-full px-[10px] outline-none ${roundClasses} ${sizeClasses} ${bgClasses} ${colorClasses} ${className}`;
 
   return (
     <div className="w-full">

@@ -1,12 +1,20 @@
-import { ChangeEvent, FocusEvent, KeyboardEvent, forwardRef } from "react";
+import {
+  ChangeEvent,
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  useImperativeHandle,
+  useRef,
+} from "react";
 import Text from "../text";
 
 export interface InputProps {
   label?: string;
   name?: string;
   value?: string;
-  type?: "text" | "email" | "password" | "number" | "file";
+  type?: "file";
   placeholder?: string;
+  bgColor?: "dark" | "light" | "transparent" | "theme";
   size?: "sm" | "md" | "lg";
   radius?: "sm" | "md" | "lg";
   isLoading?: boolean;
@@ -27,6 +35,7 @@ const InputFile = forwardRef<HTMLInputElement, InputProps>(
       value,
       placeholder = "Choose file",
       isLoading = false,
+      bgColor = "dark",
       className,
       size = "lg",
       color = "dark",
@@ -39,6 +48,8 @@ const InputFile = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
+    const inputRef = useRef<HTMLInputElement>(null);
+    useImperativeHandle(ref, () => inputRef.current!);
     const colorClasses = {
       dark: "text-gray-900",
       light: "h-[30px] xl:h-[38px] text-[14px]",
@@ -53,7 +64,17 @@ const InputFile = forwardRef<HTMLInputElement, InputProps>(
       md: "rounded-[10px]",
       lg: "rounded-[12px]",
     }[radius];
-    const inputFinalClasses = `border border-gray-500  w-full px-[15px] text-gray-100  outline-none ${colorClasses} ${roundClasses} ${sizeClasses} ${className}`;
+    const bgClasses = {
+      dark: "bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 ",
+      light: "bg-gray-50 border border-gray-300 text-gray-900 ",
+      transparent: "",
+      theme:
+        " bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white dark:placeholder:text-gray-400 ",
+    }[bgColor];
+    const inputFinalClasses = `w-full px-[15px] text-gray-100  outline-none ${colorClasses} ${roundClasses} ${sizeClasses} ${bgClasses} ${className}`;
+    const handleDivClick = () => {
+      inputRef.current?.click();
+    };
     return (
       <div className="w-full">
         {label && (
@@ -62,21 +83,25 @@ const InputFile = forwardRef<HTMLInputElement, InputProps>(
           </Text>
         )}
         <div className="relative w-full">
-          <input
-            id={name}
-            name={name}
-            type="file"
-            value={value}
-            placeholder={placeholder}
-            disabled={isLoading}
-            onChange={onChange}
-            onInput={onInput}
-            onBlur={onBlur}
-            onFocus={onFocus}
-            onKeyDown={onKeyDown}
-            ref={ref}
-            className={inputFinalClasses}
-          />
+          <div className={`${inputFinalClasses} flex items-center`} onClick={handleDivClick}>
+            <Text color="theme-gray">{placeholder}</Text>
+            <input
+              id={name}
+              name={name}
+              type="file"
+              value={value}
+              placeholder={placeholder}
+              disabled={isLoading}
+              onChange={onChange}
+              onInput={onInput}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              onKeyDown={onKeyDown}
+              ref={inputRef}
+              className={inputFinalClasses}
+              hidden
+            />
+          </div>
         </div>
       </div>
     );

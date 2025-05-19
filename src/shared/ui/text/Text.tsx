@@ -1,11 +1,19 @@
-
 import React from "react";
 
 interface TextProps {
   children?: React.ReactNode;
   size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
   element?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "strong" | "del";
-  color?: "primary" | "secondary" | "tertiary" | "danger" | "warning" | "dark" | "white";
+  color?:
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "danger"
+    | "warning"
+    | "dark"
+    | "white"
+    | "theme"
+    | "theme-gray";
   textAlign?: "start" | "center" | "end";
   fontWeight?: "regular" | "medium" | "semiBold" | "bold";
   textDecoration?: "underline" | "overline" | "line-through" | "none";
@@ -41,6 +49,8 @@ const Text = ({
     warning: "text-yellow-500",
     dark: "text-gray-900",
     white: "text-white",
+    theme: "dark:text-white text-gray-900",
+    "theme-gray": "dark:text-gray-400 text-gray-500",
   }[color];
 
   const textAlignClasses = {

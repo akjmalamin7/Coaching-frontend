@@ -6,7 +6,7 @@ export interface InputProps {
   value?: string;
   radius?: "sm" | "md" | "lg";
   color?: "dark" | "light";
-  bgColor?: "dark" | "light" | "transparent";
+  bgColor?: "dark" | "light" | "transparent" | "theme";
   placeholder?: string;
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;

@@ -3,8 +3,14 @@ import React from "react";
 interface Props {
   children?: React.ReactNode;
   padding?: "xs" | "sm" | "md" | "lg" | "xlg" | "2xl" | "none";
+  bgColor?: "dark" | "white" | "theme";
 }
-const CardFooter = ({ padding = "xs", children }: Props) => {
+const bgColors: Record<string, string> = {
+  dark: "bg-gray-700",
+  white: "bg-gray-100",
+  theme: "bg-gray-50 dark:bg-gray-800",
+};
+const CardFooter = ({ padding = "xs", bgColor = "dark", children }: Props) => {
   const paddings = {
     none: "px-0 py-0",
     xs: "px-[10px] py-[10px]",
@@ -14,7 +20,8 @@ const CardFooter = ({ padding = "xs", children }: Props) => {
     xlg: "px-[25px] py-[25px]",
     "2xl": "px-[48px] py-[48px]",
   }[padding];
-  const finalClasses = `bg-gray-600 w-full ${paddings}`;
+  const cardFooterBgColors = bgColors[bgColor] || "";
+  const finalClasses = `${cardFooterBgColors} w-full ${paddings}`;
   return <div className={finalClasses}>{children}</div>;
 };
 

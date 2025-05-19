@@ -9,21 +9,25 @@ const AppDrawer = () => {
   // const { handleLogout } = useLoggedOut();
   const navigate = useNavigate();
   const handleLogout = () => {
-    console.log("signin");
     navigate("/signin");
   };
   return (
-    <Card className="w-[180px]" radius="sm">
-      <Card.CardHeader>
-        <Text size="md" color="white">
+    <Card className="w-[180px]" radius="sm" bgColor="theme">
+      <Card.CardHeader bgColor="theme">
+        <Text size="md" color="theme">
           <Link to={"/profile"} className="w-100 flex">
             Profile
           </Link>
         </Text>
       </Card.CardHeader>
-      <Card.CardBody>
-        <Button variant="text" className=" h-auto md:h-auto py-0 lg:cursor-pointer" width="full" onClick={handleLogout}>
-          <Text size="md" color="white">
+      <Card.CardBody bgColor="theme" border="top">
+        <Button
+          variant="text"
+          className=" h-auto md:h-auto py-0 lg:cursor-pointer"
+          width="full"
+          onClick={handleLogout}
+        >
+          <Text size="md" color="theme">
             Log out
           </Text>
         </Button>

@@ -11,7 +11,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       type = "text",
       size = "lg",
       radius = "sm",
-      color = "dark",
+
       bgColor = "transparent",
       placeholder = "",
       isLoading = false,
@@ -26,10 +26,6 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     },
     ref
   ) => {
-    const colorClasses = {
-      dark: "text-gray-900",
-      light: "h-[30px] xl:h-[38px] text-[14px]",
-    }[color];
     const sizeClasses = {
       sm: "h-[30px] xl:h-[38px] text-[14px]",
       md: "h-[36px] xl:h-[44px] text-[14px]",
@@ -41,11 +37,13 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       lg: "rounded-[12px]",
     }[radius];
     const bgClasses = {
-      dark: "bg-gray-500",
-      light: "bg-[#f7f7f708]",
+      dark: "bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 ",
+      light: "bg-gray-50 border border-gray-300 text-gray-900 ",
       transparent: "",
+      theme:
+        " bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white dark:placeholder:text-gray-400 ",
     }[bgColor];
-    const finalInputClasses = `border border-gray-500  w-full px-[15px] text-gray-100  outline-none ${roundClasses} ${sizeClasses} ${bgClasses} ${colorClasses} ${className}`;
+    const finalInputClasses = `outline-none w-full px-[10px] text-gray-100 ${roundClasses} ${sizeClasses} ${bgClasses} ${className}`;
     return (
       <div className="w-full">
         {label && (

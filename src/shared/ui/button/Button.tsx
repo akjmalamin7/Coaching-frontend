@@ -5,7 +5,7 @@ interface ButtonProps {
   width?: "full" | "auto";
   variant?: "fill" | "outline" | "text";
   type?: "button" | "submit";
-  color?: "primary" | "secondary" | "tertiary" | "danger" | "warning" | "dark" | "white";
+  color?: "primary" | "secondary" | "tertiary" | "danger" | "warning" | "dark" | "white" | "theme";
   size?: "size-0" | "size-1" | "size-2" | "size-3" | "size-4" | "size-5" | "size-6" | "size-7";
   disabled?: boolean;
   loading?: boolean;
@@ -37,6 +37,7 @@ const Button = ({
     warning: "bg-yellow-500 text-black border-yellow-500",
     dark: "bg-gray-900 text-white border-gray-900",
     white: "bg-white text-black border-gray-300",
+    theme: "bg-gray-950  dark:bg-gray-100 text-gray-100 dark:text-gray-950",
   };
 
   const outlineVariants = {
@@ -47,6 +48,7 @@ const Button = ({
     warning: "border border-yellow-500 text-yellow-500 bg-transparent",
     dark: "border border-gray-900 text-gray-900 bg-transparent",
     white: "border border-gray-300 text-black bg-transparent",
+    theme: "border border-gray-300 dark:border-gray-700",
   };
 
   const variantClass = {

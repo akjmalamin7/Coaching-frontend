@@ -39,11 +39,13 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
       lg: "rounded-[12px]",
     }[radius];
     const bgClasses = {
-      dark: "bg-gray-500",
-      light: "bg-[#f7f7f708]",
+      dark: "bg-gray-700 border-gray-600 text-white placeholder:text-gray-400 ",
+      light: "bg-gray-50 border border-gray-300 text-gray-900 ",
       transparent: "",
+      theme:
+        " bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white dark:placeholder:text-gray-400 ",
     }[bgColor];
-    const finalInputClasses = `border border-gray-500  w-full p-[15px] text-gray-100  outline-none ${roundClasses} ${sizeClasses} ${bgClasses} ${colorClasses} ${className}`;
+    const finalInputClasses = `w-full p-[10px] text-gray-100  outline-none ${roundClasses} ${sizeClasses} ${bgClasses} ${colorClasses} ${className}`;
     return (
       <div className="w-full">
         {label && (

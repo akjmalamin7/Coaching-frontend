@@ -9,11 +9,11 @@ interface AvatarProps {
 }
 const Avatar = ({ name, size = "md", alt, url, onClick }: AvatarProps) => {
   const sizeClasses = {
-    sm: "w-[30px] h-[30px] border border-gray-700 rounded-full",
-    md: "w-[40px] h-[40px] border border-gray-700 rounded-full",
-    lg: "w-[45px] h-[45px] border border-gray-700 rounded-full",
+    sm: "w-[30px] h-[30px]",
+    md: "w-[40px] h-[40px]",
+    lg: "w-[45px] h-[45px]",
   }[size];
-  const sizeFinalClass = `overflow-hidden ${sizeClasses}`;
+  const sizeFinalClass = `overflow-hidden ${sizeClasses} border border-gray-300 dark:border-gray-700 rounded-full`;
   return (
     <div className="flex items-center gap-[12px] lg:cursor-pointer" onClick={onClick}>
       <div className={sizeFinalClass}>

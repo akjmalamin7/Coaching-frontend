@@ -1,17 +1,20 @@
 @import "tailwindcss";
-body {
-  font-family: "Sora", serif;
-  background-color: oklch(0.21 0.034 264.665);
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@layer base {
+  html {
+    @apply transition-colors duration-300;
+  }
+  body {
+    @apply bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100;
+  }
 }
-.menu_link {
-}
+
 .menu_link:hover .icon_style svg {
   path {
     fill: #ffffff;
   }
 }
-.icon_style {
-}
+
 .icon_style svg {
   width: 25px;
   height: 25px;
@@ -19,55 +22,6 @@ body {
     transition: all 0.2s ease-in-out;
   }
 }
-@theme {
-  --color-100: #ffffff;
-  --color-150: #f8f8fb;
-  --color-200: #e5eefa;
-  --color-250: #dbe9fd;
-  --color-300: #74788d;
-  --color-350: #d9d9d9;
-  --color-400: #e1e1e1;
-  --color-450: #516986;
-  --color-500: #1b283a;
-  --color-550: #516986;
-  --color-600: #253642;
-  --color-650: #1e266d;
-  --color-700: #cce0ff;
-  --color-750: #0052cc;
-  --color-800: #0052cc;
-  --color-850: #0052cc0f;
-  --color-900: #0052cc;
-  --color-950: #00af70;
-  --color-1000: #00af70;
-  --color-1050: #00af70;
-  --color-1100: #00af70;
-  --color-1150: #0052cc1a;
-  --color-1200: #0052cc1a;
-  --color-1250: #f1b44c;
-
-  --color-background: var(--color-background);
-  --color-border: var(--color-border);
-  --color-text: var(--color-text);
-  --color-muted: var(--color-muted);
-  --color-card: var(--color-card);
-}
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
-:root {
-  --background: #ffffff;
-  --border: #000000;
-  --text: #000000;
-  --muted: #7b7b7b;
-}
-.dark {
-  --background: #ffffff;
-  --border: #000000;
-  --text: #000000;
-  --muted: #7b7b7b;
-}
-/* body {
-  background-color: var(--background);
-  color: var(--text);
-} */
 
 @keyframes indeterminate {
   0% {

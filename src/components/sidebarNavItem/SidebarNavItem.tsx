@@ -12,16 +12,12 @@ const SidebarNavItem = ({ icon, path, title }: Props) => {
     <li>
       <NavLink
         to={path || ""}
-        className=" menu_link py-[10px] flex gap-[10px] px-[10px] hover:bg-gray-700 rounded-[8px] transition-all duration-200 ease-in-out"
+        className="group menu_link h-[36px] flex gap-[10px] px-[10px] hover:bg-gray-100 dark:hover:bg-gray-700 rounded-[8px] transition-all duration-200 ease-in-out"
       >
         <div className="flex items-center gap-[10px]">
-          {icon && (
-            <div className="icon_style text-gray-700 hover:fill-white transition-all duration-200 ease-in-out">
-              {icon}
-            </div>
-          )}
+          {icon && <div className=" transition-all duration-200 ease-in-out">{icon}</div>}
           <div>
-            <Text size="md" element="p" fontWeight="medium" color="white">
+            <Text size="lg" element="p" fontWeight="regular" color="theme">
               {title}
             </Text>
           </div>

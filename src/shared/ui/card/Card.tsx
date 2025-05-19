@@ -5,7 +5,7 @@ import CardHeader from "./CardHeader";
 interface CardProps {
   children?: React.ReactNode;
   padding?: "xs" | "sm" | "md" | "lg" | "xlg" | "2xl" | "none";
-  bgColor?: "dark" | "white";
+  bgColor?: "dark" | "white" | "theme";
   radius?: "sm" | "md" | "lg";
   className?: string;
   cardStyle?: "border" | "shadow";
@@ -17,8 +17,9 @@ const cardStyles: Record<string, string> = {
 };
 
 const bgColors: Record<string, string> = {
-  primary: "bg-gray-700",
+  dark: "bg-gray-700",
   white: "bg-gray-100",
+  theme: "bg-gray-50 dark:bg-gray-800",
 };
 const radiuses: Record<string, string> = {
   sm: "rounded-[8px]",
@@ -46,7 +47,11 @@ const Card = ({
   const cardRadius = radiuses[radius] || "";
   const customCardStyles = cardStyles[cardStyle] || "";
   const finalClassName = `card ${customCardStyles} ${paddings} ${cardBgColors} ${cardRadius} overflow-hidden ${className}`;
-  return <div className={finalClassName}>{children}</div>;
+  return (
+    <div className={finalClassName} area-label="Card">
+      {children}
+    </div>
+  );
 };
 Card.CardHeader = CardHeader;
 Card.CardBody = CardBody;

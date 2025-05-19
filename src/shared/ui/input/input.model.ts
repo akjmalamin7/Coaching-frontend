@@ -1,4 +1,3 @@
-
 import { ChangeEvent, FocusEvent, KeyboardEvent } from "react";
 
 export interface InputProps {
@@ -8,7 +7,7 @@ export interface InputProps {
   type?: "text" | "email" | "password" | "number" | "file";
   radius?: "sm" | "md" | "lg";
   color?: "dark" | "light";
-  bgColor?: "dark" | "light" | "transparent";
+  bgColor?: "dark" | "light" | "transparent" | "theme";
   placeholder?: string;
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
