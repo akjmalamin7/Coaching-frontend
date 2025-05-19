@@ -63,8 +63,11 @@ const Header = () => {
           </Button>
         </div>
         <div className="xl:w-[235px] flex xl:justify-start">
-          <Text color="white" fontWeight="bold" size="lg">
-            <Link to={"/"} className="bg-gray-900 py-[8px] px-[10px] rounded-[5px] ">
+          <Text color="white" fontWeight="medium" size="lg">
+            <Link
+              to={"/"}
+              className="bg-gray-100 dark:bg-gray-700 text-gray-950 dark:text-gray-100 py-[8px] px-[10px] rounded-[5px] uppercase"
+            >
               Coaching
             </Link>
           </Text>
