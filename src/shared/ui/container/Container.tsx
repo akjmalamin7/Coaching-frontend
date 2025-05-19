@@ -1,18 +1,20 @@
-interface Props{
-  size?:"sm"|"md"|"lg"|"xl";
-  children?:React.ReactNode;
+import React from "react";
+interface Props {
+  width?: "sm" | "md" | "lg" | "xlg";
+  className?: string;
+  children?: React.ReactNode;
 }
-const Container = ({children, size='md'}:Props) => {
-  const sizeClasses = {
-    sm:"max-w-[1200px] px-[20px]",
-    md:"max-w-[1200px] px-[20px]",
-    lg:"max-w-[1200px] px-[20px]",
-    xl:"max-w-[1200px] px-[20px]",
-  }[size]
-  const finalClass = `${sizeClasses} mx-auto`
-  return (
-    <div className={finalClass}>{children}</div>
-  )
-}
+const widths: Record<string, string> = {
+  sm: "max-w-[720px]",
+  md: "max-w-[1180px]",
+  lg: "max-w-[1360px]",
+  xlg: "max-w-[1440px]",
+};
 
-export default Container
+const Container: React.FC<Props> = ({ width = "lg", className, children }) => {
+  const containerWidth = widths[width] || "w-full";
+  const finalClasses = `${containerWidth} w-full mx-auto p-[20px] ${className}`;
+  return <div className={finalClasses}>{children}</div>;
+};
+
+export default Container;

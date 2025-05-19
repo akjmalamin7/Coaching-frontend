@@ -1,13 +1,11 @@
-import { lazy, Suspense } from "react";
-import { RouteObject } from "react-router-dom";
+import { AppRoute } from "@/shared/routerType/router.type";
+import { lazy } from "react";
 const LazyLSignIn = lazy(() => import("./login"));
-export const authRoutes: RouteObject[] = [
+export const authRoutes: AppRoute[] = [
   {
     path: "/signin",
-    element: (
-      <Suspense fallback="Loading...">
-        <LazyLSignIn />
-      </Suspense>
-    ),
+    element: <LazyLSignIn />,
+    withLayout: false,
+    isPrivate: false,
   },
 ];
