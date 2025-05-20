@@ -22,7 +22,12 @@
     transition: all 0.2s ease-in-out;
   }
 }
-
+body {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
 @keyframes indeterminate {
   0% {
     left: -35%;

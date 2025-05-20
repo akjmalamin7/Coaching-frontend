@@ -1,10 +1,11 @@
 import Button from "@/shared/ui/button";
 import Text from "@/shared/ui/text";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 // import { useDispatch, useSelector } from "react-redux";
 import HamburgerIcon from "@/assets/icons/hamburgerIcon";
 import Modelcon from "@/assets/icons/modeIcon/Modelcon";
 import useClickOutSide from "@/shared/hooks/useClickOutSide";
+import { useTheme } from "@/shared/hooks/useTheme";
 import { sidebarToggle } from "@/shared/redux/features/sidebar/slideSidebar";
 import { AppDispatch } from "@/shared/redux/store/store";
 import Avatar from "@/shared/ui/avatar";
@@ -12,7 +13,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import AppDrawer from "../appDrawer/AppDrawer";
 const Header = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
   const dropdownRef = useRef<HTMLDivElement>(null!);
 
   // ?@_______ get user@
@@ -32,28 +32,7 @@ const Header = () => {
   };
 
   /* code for dark mode */
-  useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else if (systemPrefersDark) {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  }, []);
-
-  useEffect(() => {
-    const html = document.documentElement;
-    html.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const { theme, toggleTheme } = useTheme();
   return (
     <div className="flex justify-between w-full px-[20px]">
       <div className="flex items-center gap-[10px]">
@@ -73,7 +52,17 @@ const Header = () => {
           </Text>
         </div>
       </div>
-      <div className="flex items-center ">
+      <div className="flex items-center gap-[10px]">
+        <Button
+          onClick={toggleTheme}
+          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+          variant="text"
+          color="theme"
+          size="size-3"
+          className="hover:bg-gray-100 dark:hover:bg-gray-700 !px-[10px]"
+        >
+          <Modelcon mode={theme === "dark" ? "light" : "dark"} />
+        </Button>
         <div className="relative">
           <Avatar
             //  url={user?.photo || ""}
@@ -87,16 +76,6 @@ const Header = () => {
             <AppDrawer />
           </div>
         </div>
-        <Button
-          onClick={toggleTheme}
-          aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-          variant="outline"
-          color="theme"
-          size="size-3"
-          className="hover:bg-gray-100 dark:hover:bg-gray-700 !px-[10px]"
-        >
-          <Modelcon mode={theme === "dark" ? "light" : "dark"} />
-        </Button>
       </div>
     </div>
   );
