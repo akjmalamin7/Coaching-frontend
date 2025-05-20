@@ -99,7 +99,7 @@ const LoginForm = () => {
               <div className="signup">
                 <Text size="md" fontWeight="regular" color="theme-gray">
                   Don’t have an account yet?{" "}
-                  <Link to={"/signup"} className="text-blue-600">
+                  <Link to={"/registration"} className="text-blue-600">
                     Sign up
                   </Link>
                 </Text>
