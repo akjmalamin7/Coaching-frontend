@@ -7,30 +7,44 @@ import { Link } from "react-router-dom";
 
 const LoginForm = () => {
   return (
-    <div className="max-w-[430px] w-[100%] mx-auto">
+    <div className="max-w-[360px] lg:max-w-[400px] w-[100%] mx-auto">
       <div className="mb-[20px]">
-        <Text element="h1" size="xl" fontWeight="bold" className="uppercase" textAlign="center">
-          {/* Coaching */}
+        <Text element="h1" size="xl" fontWeight="semiBold" className="uppercase" textAlign="center">
+          {/* Welcome to CMS */}
         </Text>
       </div>
       <div>
         <Card bgColor="white" className="!bg-white" radius="md">
           <Card.CardBody className="!bg-white !p-7">
-            <form className="flex flex-col gap-5">
+            <form className="flex flex-col gap-4">
               <div className="mb-1">
                 <Text element="h3" size="lg" fontWeight="medium">
                   Sign in to your account
                 </Text>
               </div>
               <div className="email">
-                <Input type="email" size="sm" bgColor="theme" label="Your email" placeholder="example@gmail.com" />
+                <Input
+                  errorMessage="Email field is required"
+                  type="email"
+                  size="sm"
+                  bgColor="theme"
+                  label="Your email"
+                  placeholder="example@gmail.com"
+                />
               </div>
               <div className="password">
-                <Input type="password" size="sm" bgColor="theme" label="Password" placeholder="******" />
+                <Input
+                  errorMessage="Password field is required"
+                  type="password"
+                  size="sm"
+                  bgColor="theme"
+                  label="Password"
+                  placeholder="******"
+                />
               </div>
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
-                  <Checkbox label="Remember me" />
+                  <Checkbox label="Remember me" disabled />
                 </div>
                 <div className="forgot-password">
                   <Text size="md" fontWeight="regular" color="primary">

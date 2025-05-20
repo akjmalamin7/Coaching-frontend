@@ -54,7 +54,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
       </label>
       {label && (
         <label htmlFor={id} className={`select-none ${disabled ? "text-gray-400" : "text-slate-800"}`}>
-          <Text size="md" fontWeight="regular" color="theme-gray">
+          <Text
+            size="md"
+            fontWeight="regular"
+            color="theme-gray"
+            className={`${disabled ? "opacity-65" : "opacity-100"}`}
+          >
             {label}
           </Text>
         </label>

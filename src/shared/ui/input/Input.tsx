@@ -77,7 +77,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             </button>
           )}
           {errorMessage && (
-            <Text size="sm" className="text-red-500">
+            <Text size="sm" className="text-red-500 mt-1 ml-1">
               {errorMessage}
             </Text>
           )}
