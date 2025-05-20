@@ -1,16 +1,12 @@
-// import useLoggedOut from "@/shared/hooks/useLoggedOut";
+import useLogout from "@/shared/hooks/useLogout";
 import Button from "@/shared/ui/button";
 import Card from "@/shared/ui/card";
-
 import Text from "@/shared/ui/text";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const AppDrawer = () => {
-  // const { handleLogout } = useLoggedOut();
-  const navigate = useNavigate();
-  const handleLogout = () => {
-    navigate("/signin");
-  };
+  const { handleLogout } = useLogout();
+
   return (
     <Card className="w-[180px]" radius="sm" bgColor="theme">
       <Card.CardHeader bgColor="theme">

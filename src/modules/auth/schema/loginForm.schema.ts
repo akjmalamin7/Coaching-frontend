@@ -12,6 +12,7 @@ export const schema = yup.object().shape({
     .string()
     .required("Password is required")
     .test("is-strong", "Password is not strong enough", (value) => {
-      validatePassword(value);
+      const result = validatePassword(value);
+      return result.isValid;
     }),
 });

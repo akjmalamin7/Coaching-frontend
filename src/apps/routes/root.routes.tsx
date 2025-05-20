@@ -6,6 +6,7 @@ import { AppRoute } from "@/shared/routerType/router.type";
 import { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "../privateRoute";
+import PublicRoute from "../publicRoute";
 
 const router: AppRoute[] = [...authRoutes, ...homeRoutes, ...profileRoute].map((route) => {
   let element = <Suspense fallback="Loading...">{route.element}</Suspense>;
@@ -15,6 +16,8 @@ const router: AppRoute[] = [...authRoutes, ...homeRoutes, ...profileRoute].map((
         <Layout>{element}</Layout>
       </PrivateRoute>
     );
+  } else {
+    element = <PublicRoute>{element}</PublicRoute>;
   }
   return {
     ...route,

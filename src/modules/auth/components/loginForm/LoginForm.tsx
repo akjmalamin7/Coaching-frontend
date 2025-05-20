@@ -1,26 +1,38 @@
+import { useLoginMutation } from "@/shared/redux/features/auth/authApi";
 import Button from "@/shared/ui/button";
 import Card from "@/shared/ui/card";
 import Checkbox from "@/shared/ui/checkbox";
 import Input from "@/shared/ui/input";
-import PasswordRules from "@/shared/ui/passwordRules/PasswordRules";
+import PasswordRules from "@/shared/ui/passwordRules";
 import Text from "@/shared/ui/text";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FormValues, schema } from "../../schema/loginForm.schema";
 const LoginForm = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
     watch,
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
+    mode: "onChange",
+    defaultValues: {
+      email: "",
+      password: "",
+    },
   });
-
+  const [login, { isLoading }] = useLoginMutation();
   const passwordWatch = watch("password");
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const onSubmit = async (data: FormValues) => {
+    try {
+      await login(data).unwrap();
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="max-w-[360px] lg:max-w-[400px] w-[100%] mx-auto">
@@ -74,8 +86,14 @@ const LoginForm = () => {
                 </div>
               </div>
               <div className="signin-button">
-                <Button width="full" size="size-3">
-                  Sign in
+                <Button
+                  width="full"
+                  size="size-3"
+                  loading={isLoading}
+                  disabled={!isValid || isLoading}
+                  type="submit"
+                >
+                  {isLoading === true ? "Submitting..." : "Sign in your account"}
                 </Button>
               </div>
               <div className="signup">

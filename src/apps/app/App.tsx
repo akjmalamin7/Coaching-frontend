@@ -1,7 +1,13 @@
 import rootRoutes from "@/apps/routes/root.routes.tsx";
+import useAuthCheck from "@/shared/hooks/useAuthChecked";
+import useAutoLogout from "@/shared/hooks/useAutoLogout";
 import { RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 const App = () => {
+  const authChecked = useAuthCheck();
+  useAutoLogout();
+  if (!authChecked) return <div>Checking authentication...</div>;
+
   return (
     <div>
       <ToastContainer
