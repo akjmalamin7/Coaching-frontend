@@ -32,7 +32,11 @@ const Checkbox: React.FC<CheckboxProps> = ({
           onChange={onChange}
           disabled={disabled}
           className={`peer h-5 w-5 cursor-pointer appearance-none rounded border transition-all duration-200 
-            ${disabled ? "border-gray-300 bg-gray-200 cursor-not-allowed" : "border-slate-300 hover:shadow-md"} 
+            ${
+              disabled
+                ? "border-gray-300 bg-gray-200 cursor-not-allowed"
+                : "border-slate-300 hover:shadow-md"
+            } 
             checked:bg-blue-600 checked:border-blue-600`}
         />
         <span className="absolute text-white opacity-0 peer-checked:opacity-100 pointer-events-none top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -53,7 +57,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
         </span>
       </label>
       {label && (
-        <label htmlFor={id} className={`select-none ${disabled ? "text-gray-400" : "text-slate-800"}`}>
+        <label
+          htmlFor={id}
+          className={`select-none ${disabled ? "text-gray-400" : "text-slate-800"}`}
+        >
           <Text
             size="md"
             fontWeight="regular"

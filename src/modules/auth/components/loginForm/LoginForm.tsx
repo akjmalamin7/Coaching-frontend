@@ -2,10 +2,26 @@ import Button from "@/shared/ui/button";
 import Card from "@/shared/ui/card";
 import Checkbox from "@/shared/ui/checkbox";
 import Input from "@/shared/ui/input";
+import PasswordRules from "@/shared/ui/passwordRules/PasswordRules";
 import Text from "@/shared/ui/text";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-
+import { FormValues, schema } from "../../schema/loginForm.schema";
 const LoginForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    watch,
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+  });
+
+  const passwordWatch = watch("password");
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+  };
   return (
     <div className="max-w-[360px] lg:max-w-[400px] w-[100%] mx-auto">
       <div className="mb-[20px]">
@@ -16,7 +32,7 @@ const LoginForm = () => {
       <div>
         <Card bgColor="white" className="!bg-white" radius="md">
           <Card.CardBody className="!bg-white !p-7">
-            <form className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
               <div className="mb-1">
                 <Text element="h3" size="lg" fontWeight="medium">
                   Sign in to your account
@@ -24,7 +40,8 @@ const LoginForm = () => {
               </div>
               <div className="email">
                 <Input
-                  errorMessage="Email field is required"
+                  {...register("email")}
+                  errorMessage={errors.email?.message}
                   type="email"
                   size="sm"
                   bgColor="theme"
@@ -34,7 +51,8 @@ const LoginForm = () => {
               </div>
               <div className="password">
                 <Input
-                  errorMessage="Password field is required"
+                  {...register("password")}
+                  errorMessage={errors.password?.message}
                   type="password"
                   size="sm"
                   bgColor="theme"
@@ -42,6 +60,9 @@ const LoginForm = () => {
                   placeholder="******"
                 />
               </div>
+              {passwordWatch && passwordWatch.length > 0 && (
+                <PasswordRules password={passwordWatch} />
+              )}
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
                   <Checkbox label="Remember me" disabled />
