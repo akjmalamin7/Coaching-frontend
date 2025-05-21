@@ -21,6 +21,7 @@ const App = () => {
         toastStyle={{ background: "#1A1A1A" }}
         closeOnClick
         pauseOnFocusLoss={false}
+        toastClassName={"bg-red-"}
       />
       <RouterProvider router={rootRoutes()} />
     </div>
