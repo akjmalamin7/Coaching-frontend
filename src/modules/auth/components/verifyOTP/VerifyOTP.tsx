@@ -1,5 +1,6 @@
 import { useOtpVerifyAndCreateMutation } from "@/shared/redux/features/auth/authApi";
 import Button from "@/shared/ui/button";
+import ApiErrorMessage from "@/shared/ui/errorMessage";
 import Input from "@/shared/ui/input";
 import PasswordRules from "@/shared/ui/passwordRules";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -28,7 +29,7 @@ const VerifyOTP = ({ getEmail }: Props) => {
       password: "",
     },
   });
-  const [otpSend, { isLoading }] = useOtpVerifyAndCreateMutation();
+  const [otpSend, { isError, error, isLoading }] = useOtpVerifyAndCreateMutation();
   const passwordWatch = watch("password");
   const onSubmit = async (data: VerifyOTPSchema) => {
     try {
@@ -46,6 +47,7 @@ const VerifyOTP = ({ getEmail }: Props) => {
 
   return (
     <div className="send-otp">
+      <ApiErrorMessage isError={isError} error={error} />
       <form className="flex flex-col gap-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="otp">
           <Input

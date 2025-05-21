@@ -43,7 +43,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, InputProps>(
       light: "bg-gray-50 border border-gray-300 text-gray-900 ",
       transparent: "",
       theme:
-        " bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white dark:placeholder:text-gray-400 ",
+        " bg-gray-50 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white dark:placeholder:text-gray-400 focus:border focus:border-blue-700  dark:focus:border-gray-100",
     }[bgColor];
     const finalInputClasses = `w-full p-[10px] text-gray-100  outline-none ${roundClasses} ${sizeClasses} ${bgClasses} ${colorClasses} ${className}`;
     return (

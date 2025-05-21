@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import { validatePassword } from "./passwordValidator.schema";
+import { validatePassword } from "../../../shared/utils/passwordValidator.schema";
 export interface SendOTPSchema {
   email: string;
 }

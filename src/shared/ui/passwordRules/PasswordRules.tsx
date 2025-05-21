@@ -1,5 +1,3 @@
-// PasswordRules.tsx
-
 import useValidPassword from "@/shared/hooks/useValidPassword";
 
 interface Props {
@@ -8,6 +6,10 @@ interface Props {
 
 const PasswordRules = ({ password = "" }: Props) => {
   const { hasCapital, hasMinLength, hasNumber, hasSpecialChar } = useValidPassword(password);
+  const allValid = hasCapital && hasMinLength && hasNumber && hasSpecialChar;
+
+  // If all rules are satisfied, do not render anything
+  if (allValid) return null;
   const checkMark = (valid: boolean) =>
     valid ? <span className="text-green-600">✓</span> : <span className="text-red-500">✗</span>;
 
@@ -16,8 +18,7 @@ const PasswordRules = ({ password = "" }: Props) => {
       <p className="font-semibold">Password Requirement</p>
       <ul className="list-disc list-inside space-y-0.5 mt-2">
         <li className="text-[12px]">
-          {checkMark(hasSpecialChar)} One special character (
-          <code>! @ # $ % ^ & * ( ) - _ = +</code>)
+          {checkMark(hasSpecialChar)} One special character (<code>! @ # $ % ^ & * ( ) - _ = +</code>)
         </li>
         <li className="text-[12px]">{checkMark(hasMinLength)} Minimum 8 characters</li>
         <li className="text-[12px]">{checkMark(hasNumber)} At least 1 number</li>

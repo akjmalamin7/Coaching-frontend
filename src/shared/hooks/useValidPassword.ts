@@ -1,6 +1,6 @@
 // hooks/useValidPassword.ts
 
-import { validatePassword } from "@/modules/auth/schema/passwordValidator.schema";
+import { validatePassword } from "@/shared/utils/passwordValidator.schema";
 
 const useValidPassword = (password: string) => {
   return validatePassword(password);

@@ -1,7 +1,9 @@
+import useApiErrorByToast from "@/shared/hooks/useApiErrorByToast";
 import { useLoginMutation } from "@/shared/redux/features/auth/authApi";
 import Button from "@/shared/ui/button";
 import Card from "@/shared/ui/card";
 import Checkbox from "@/shared/ui/checkbox";
+import ApiErrorMessage from "@/shared/ui/errorMessage";
 import Input from "@/shared/ui/input";
 import PasswordRules from "@/shared/ui/passwordRules";
 import Text from "@/shared/ui/text";
@@ -24,7 +26,7 @@ const LoginForm = () => {
       password: "",
     },
   });
-  const [login, { isLoading }] = useLoginMutation();
+  const [login, { isError, error, isLoading }] = useLoginMutation();
   const passwordWatch = watch("password");
   const onSubmit = async (data: FormValues) => {
     try {
@@ -34,6 +36,7 @@ const LoginForm = () => {
       console.log(error);
     }
   };
+  useApiErrorByToast({ isError, error });
   return (
     <div className="max-w-[360px] lg:max-w-[400px] w-[100%] mx-auto">
       <div className="mb-[20px]">
@@ -44,6 +47,8 @@ const LoginForm = () => {
       <div>
         <Card bgColor="white" className="!bg-white" radius="md">
           <Card.CardBody className="!bg-white !p-7">
+            <ApiErrorMessage isError={isError} error={error} />
+
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
               <div className="mb-1">
                 <Text element="h3" size="lg" fontWeight="medium">

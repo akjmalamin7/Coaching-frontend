@@ -17,7 +17,7 @@ const SidebarNavItem = ({ icon, path, title }: Props) => {
         <div className="flex items-center gap-[10px]">
           {icon && <div className=" transition-all duration-200 ease-in-out">{icon}</div>}
           <div>
-            <Text size="lg" element="p" fontWeight="regular" color="theme">
+            <Text size="md" element="p" fontWeight="regular" color="theme">
               {title}
             </Text>
           </div>

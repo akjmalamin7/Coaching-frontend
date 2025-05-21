@@ -59,7 +59,7 @@ const Header = () => {
           variant="text"
           color="theme"
           size="size-3"
-          className="hover:bg-gray-100 dark:hover:bg-gray-700 !px-[10px]"
+          className="hover:bg-gray-100 dark:hover:bg-gray-700 !px-[10px] !w-[40px] !h-[40px]"
         >
           <Modelcon mode={theme === "dark" ? "light" : "dark"} />
         </Button>
