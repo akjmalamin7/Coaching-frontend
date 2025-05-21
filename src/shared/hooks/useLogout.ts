@@ -10,6 +10,9 @@ export default function useLogout() {
   const handleLogout = () => {
     Cookies.remove("auth");
     dispatch(userLoggedOut());
+    if (localStorage.getItem("theme")) {
+      localStorage.removeItem("theme");
+    }
     navigate("/login");
   };
   return { handleLogout };

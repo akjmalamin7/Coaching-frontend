@@ -72,9 +72,7 @@ const LoginForm = () => {
                   placeholder="******"
                 />
               </div>
-              {passwordWatch && passwordWatch.length > 0 && (
-                <PasswordRules password={passwordWatch} />
-              )}
+              {passwordWatch && passwordWatch.length > 0 && <PasswordRules password={passwordWatch} />}
               <div className="flex justify-between items-center">
                 <div className="flex items-center">
                   <Checkbox label="Remember me" disabled />
@@ -86,13 +84,7 @@ const LoginForm = () => {
                 </div>
               </div>
               <div className="signin-button">
-                <Button
-                  width="full"
-                  size="size-3"
-                  loading={isLoading}
-                  disabled={!isValid || isLoading}
-                  type="submit"
-                >
+                <Button width="full" size="size-3" loading={isLoading} disabled={!isValid || isLoading} type="submit">
                   {isLoading === true ? "Submitting..." : "Sign in your account"}
                 </Button>
               </div>

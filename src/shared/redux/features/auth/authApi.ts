@@ -4,6 +4,20 @@ import { userLoggedIn } from "./authSlice";
 
 export const authApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
+    otpSend: builder.mutation({
+      query: (data) => ({
+        url: "/user-otp",
+        method: "POST",
+        body: data,
+      }),
+    }),
+    otpVerifyAndCreate: builder.mutation({
+      query: (data) => ({
+        url: "/user/verify",
+        method: "POST",
+        body: data,
+      }),
+    }),
     login: builder.mutation({
       query: (data) => ({
         url: "/login",
@@ -26,10 +40,6 @@ export const authApi = apiSlice.injectEndpoints({
               user: result?.data?.user,
             })
           );
-          console.log({
-            token: result?.data?.token,
-            user: result?.data?.user,
-          });
         } catch (err) {
           console.log(err);
         }
@@ -37,4 +47,4 @@ export const authApi = apiSlice.injectEndpoints({
     }),
   }),
 });
-export const { useLoginMutation } = authApi;
+export const { useLoginMutation, useOtpSendMutation, useOtpVerifyAndCreateMutation } = authApi;

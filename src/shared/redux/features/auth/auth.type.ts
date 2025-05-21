@@ -16,3 +16,12 @@ export const AUTH_INITIAL_STATE: AuthState = {
   token: null,
   user: {} as UserSchema,
 };
+export interface SendOTPSchema {
+  email: string;
+}
+export interface OTPVerifySchema {
+  otp: string;
+  role: string;
+  email: string;
+  password: string;
+}

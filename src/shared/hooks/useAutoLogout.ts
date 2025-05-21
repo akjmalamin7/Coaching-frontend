@@ -26,6 +26,9 @@ const useAutoLogout = () => {
       if (timeoutDuration <= 0) {
         dispatch(userLoggedOut());
         Cookies.remove("auth");
+        if (localStorage.getItem("theme")) {
+          localStorage.removeItem("theme");
+        }
         return;
       }
 
