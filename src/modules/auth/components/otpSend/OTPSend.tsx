@@ -25,7 +25,6 @@ const OTPSend = ({ onSuccess, onGetEmail }: Props) => {
   const onSubmit = async (data: SendOTPSchema) => {
     try {
       const result = await otpSend(data).unwrap();
-      console.log(result);
       if (result.status === "success") {
         onGetEmail(data.email);
         onSuccess(true);
@@ -51,7 +50,13 @@ const OTPSend = ({ onSuccess, onGetEmail }: Props) => {
           />
         </div>
         <div className="signin-button">
-          <Button width="full" size="size-3" loading={isLoading} disabled={!isValid || isLoading} type="submit">
+          <Button
+            width="full"
+            size="size-3"
+            loading={isLoading}
+            disabled={!isValid || isLoading}
+            type="submit"
+          >
             {isLoading === true ? "Sending..." : "Send OTP"}
           </Button>
         </div>
