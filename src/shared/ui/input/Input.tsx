@@ -17,6 +17,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
       isLoading = false,
       className = "",
       errorMessage,
+      disabled,
+      readonly,
       onChange,
       onInput,
       onBlur,
@@ -58,7 +60,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             value={value}
             type={type}
             placeholder={placeholder}
-            disabled={isLoading}
+            disabled={disabled}
+            readOnly={readonly}
             onChange={onChange}
             onInput={onInput}
             onBlur={onBlur}

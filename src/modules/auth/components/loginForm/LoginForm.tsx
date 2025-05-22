@@ -65,6 +65,7 @@ const LoginForm = () => {
                   bgColor="theme"
                   label="Your email"
                   placeholder="example@gmail.com"
+                  disabled={isLoading}
                 />
               </div>
               <div className="password">
@@ -76,6 +77,7 @@ const LoginForm = () => {
                   bgColor="theme"
                   label="Password"
                   placeholder="******"
+                  disabled={isLoading}
                 />
               </div>
               {passwordWatch && passwordWatch.length > 0 && (

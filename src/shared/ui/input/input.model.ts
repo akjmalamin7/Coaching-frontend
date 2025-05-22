@@ -13,6 +13,8 @@ export interface InputProps {
   isLoading?: boolean;
   className?: string;
   errorMessage?: string;
+  disabled?: boolean;
+  readonly?: boolean;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   onInput?: (event: React.FormEvent<HTMLInputElement>) => void;
   onBlur?: (event: FocusEvent<HTMLInputElement>) => void;
