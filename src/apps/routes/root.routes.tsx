@@ -1,5 +1,6 @@
 import Layout from "@/components/layout";
 import { authRoutes } from "@/modules/auth/routes";
+import { batchRoutes } from "@/modules/batch/routes";
 import { homeRoutes } from "@/modules/home/routes";
 import { profileRoute } from "@/modules/profile/routes";
 import { subjectRoutes } from "@/modules/subject/routes";
@@ -10,24 +11,29 @@ import { createBrowserRouter } from "react-router-dom";
 import PrivateRoute from "../privateRoute";
 import PublicRoute from "../publicRoute";
 
-const router: AppRoute[] = [...authRoutes, ...homeRoutes, ...profileRoute, ...subjectRoutes, ...unauthorized_route].map(
-  (route) => {
-    let element = <Suspense fallback="Loading...">{route.element}</Suspense>;
-    if (route.withLayout && route.isPrivate) {
-      element = (
-        <PrivateRoute allow_roles={route.role ?? []}>
-          <Layout>{element}</Layout>
-        </PrivateRoute>
-      );
-    } else {
-      element = <PublicRoute>{element}</PublicRoute>;
-    }
-    return {
-      ...route,
-      element,
-    };
+const router: AppRoute[] = [
+  ...authRoutes,
+  ...homeRoutes,
+  ...profileRoute,
+  ...subjectRoutes,
+  ...unauthorized_route,
+  ...batchRoutes,
+].map((route) => {
+  let element = <Suspense fallback="Loading...">{route.element}</Suspense>;
+  if (route.withLayout && route.isPrivate) {
+    element = (
+      <PrivateRoute allow_roles={route.role ?? []}>
+        <Layout>{element}</Layout>
+      </PrivateRoute>
+    );
+  } else {
+    element = <PublicRoute>{element}</PublicRoute>;
   }
-);
+  return {
+    ...route,
+    element,
+  };
+});
 export default function routes() {
   return createBrowserRouter([...router]);
 }

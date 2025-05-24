@@ -48,6 +48,22 @@ export const SIDEBAR_MENU_DATA: SidebarMenuProps[] = [
     icon: <HomeIcon />,
     path: "/batch",
     role: ["admin"],
+    children: [
+      {
+        _id: "2.1",
+        title: "Create Batch",
+        icon: <HomeIcon />,
+        path: "/batch/create",
+        role: ["admin"],
+      },
+      {
+        _id: "2.2",
+        title: "Batch List",
+        icon: <HomeIcon />,
+        path: "/batch/list",
+        role: ["admin"],
+      },
+    ],
   },
   {
     _id: "4",

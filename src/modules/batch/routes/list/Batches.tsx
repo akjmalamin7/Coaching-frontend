@@ -1,11 +1,11 @@
 import Container from "@/shared/ui/container/Container";
-import SubjectList from "../../components/subjectList";
+import SubjectList from "../../components/batchList";
 
-const Subjects = () => {
+const Batches = () => {
   return (
     <Container width="sm">
       <SubjectList />
     </Container>
   );
 };
-export default Subjects;
+export default Batches;
