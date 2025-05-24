@@ -8,7 +8,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 
-const CreateSubjectForm = () => {
+const CreateBatchForm = () => {
   const {
     register,
     handleSubmit,
@@ -61,4 +61,4 @@ const CreateSubjectForm = () => {
     </Card>
   );
 };
-export default CreateSubjectForm;
+export default CreateBatchForm;
