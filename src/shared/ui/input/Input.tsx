@@ -49,7 +49,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className="w-full">
         {label && (
-          <Text className="mb-[8px]">
+          <Text className="mb-[8px]" color="theme">
             <label htmlFor={name}>{label}</label>
           </Text>
         )}
