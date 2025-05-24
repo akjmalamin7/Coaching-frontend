@@ -1,7 +1,5 @@
-import Card from "@/shared/ui/card";
-import Text from "@/shared/ui/text";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import AuthCard from "../authCard/AuthCard";
 import OTPSend from "../otpSend";
 import VerifyOTP from "../verifyOTP";
 
@@ -9,10 +7,23 @@ const RegistrationForm = () => {
   const [isSendOtp, setIsSendOtp] = useState(false);
   const [getEmail, setGetEmail] = useState<string>("");
   return (
+    <AuthCard
+      formTitle="Create an account"
+      formSubTitle=" Create your account and stay with tuition"
+      formType="registration"
+    >
+      {!isSendOtp && <OTPSend onSuccess={setIsSendOtp} onGetEmail={setGetEmail} />}
+      {isSendOtp && <VerifyOTP getEmail={getEmail} />}
+    </AuthCard>
+  );
+};
+export default RegistrationForm;
+/* 
+
     <div className="max-w-[360px] lg:max-w-[400px] w-[100%] mx-auto">
       <div className="mb-[20px]">
         <Text element="h1" size="xl" fontWeight="semiBold" className="uppercase" textAlign="center">
-          {/* Welcome to CMS */}
+       
         </Text>
       </div>
       <div>
@@ -43,6 +54,4 @@ const RegistrationForm = () => {
         </Card>
       </div>
     </div>
-  );
-};
-export default RegistrationForm;
+*/

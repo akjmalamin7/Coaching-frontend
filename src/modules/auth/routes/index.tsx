@@ -9,17 +9,20 @@ export const authRoutes: AppRoute[] = [
     element: <LazyLSignIn />,
     withLayout: false,
     isPrivate: false,
+    role: [],
   },
   {
     path: "/registration",
     element: <LazyRegistration />,
     withLayout: false,
     isPrivate: false,
+    role: [],
   },
   {
     path: "/forgot",
     element: <LazyForgot />,
     withLayout: false,
     isPrivate: false,
+    role: [],
   },
 ];

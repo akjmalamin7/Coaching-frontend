@@ -7,8 +7,8 @@ const Profile = () => {
   useDocumentTitle("Profile - Tuition");
   return (
     <Container width="md">
-      <Card>
-        <Card.CardBody>
+      <Card bgColor="theme">
+        <Card.CardBody bgColor="theme">
           <Text color="white">Profile</Text>
         </Card.CardBody>
       </Card>

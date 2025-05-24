@@ -7,5 +7,6 @@ export const homeRoutes: AppRoute[] = [
     element: <LazyHome />,
     withLayout: true,
     isPrivate: true,
+    role: ["super_admin", "admin", "teacher", "student"],
   },
 ];
